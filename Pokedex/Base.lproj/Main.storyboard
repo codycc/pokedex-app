@@ -40,14 +40,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="039-E9-rYs">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokeCell" id="039-E9-rYs" customClass="PokeCell" customModule="Pokedex" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="cET-30-2YB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="cET-30-2YB">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="7C7-7N-Il0"/>
                                                     </constraints>
@@ -70,6 +70,10 @@
                                             <constraint firstAttribute="trailing" secondItem="cET-30-2YB" secondAttribute="trailing" id="sWq-d8-zQX"/>
                                             <constraint firstAttribute="trailing" secondItem="6SH-FK-0Ge" secondAttribute="trailing" id="wmo-rM-KWX"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="nameLbl" destination="6SH-FK-0Ge" id="dWa-M7-9Zj"/>
+                                            <outlet property="thumbImg" destination="cET-30-2YB" id="qP6-HD-PzN"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -92,6 +96,9 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="veX-tA-Ivp" secondAttribute="bottom" id="yYY-MQ-sfa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collection" destination="oFw-ig-pZD" id="R69-Ur-1qk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
