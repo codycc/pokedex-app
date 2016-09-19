@@ -24,6 +24,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         initAudio()
     }
     
+    //setting up the audioplayer 
     func initAudio() {
         let path = Bundle.main.path(forResource: "music", ofType: "mp3")
         do {
@@ -91,8 +92,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
-    @IBAction func musicBtnPressed(_ sender: AnyObject) {
-        
+    @IBAction func musicBtnPressed(_ sender: UIButton) {
+        if musicPlayer.isPlaying {
+            musicPlayer.pause()
+            //changing opacity when pressed or not for nice effect
+            sender.alpha = 0.2
+        } else {
+            musicPlayer.play()
+            sender.alpha = 1.0
+        }
     }
 
 
