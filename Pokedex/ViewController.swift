@@ -90,7 +90,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+        
+        var poke: Pokemon!
+        
+        if inSearchMode {
+            poke = filteredPokemon[indexPath.item]
+        } else {
+            poke = pokemon[indexPath.item]
+        }
+        
+        performSegue(withIdentifier: "PokemonDetailVC", sender: poke)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -140,6 +149,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             filteredPokemon = pokemon.filter({$0.name.range(of: lower) != nil})
             //repopulate the collectionview with the new data
             collection.reloadData()
+        }
+    }
+    //prepare for the segue , sending any object
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // if segue identifier is pokemon detail vc
+        if segue.identifier == "PokemonDetailVC" {
+            // create vairable detailsvc and the destination view controller is pokemon detail vc
+            if let detailsVC = segue.destination as? PokemonDetailVC {
+                
+                if let poke = sender as? Pokemon {
+                    //set the other view controllers variable pokemon as this view controllers poke
+                    detailsVC.pokemon = poke 
+                }
+            }
         }
     }
 
