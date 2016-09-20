@@ -29,8 +29,28 @@ class PokemonDetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLbl.text = pokemon.name
-      
+        nameLbl.text = pokemon.name.capitalized
+        let img = UIImage(named: "\(pokemon.pokedexId)")
+        mainImg.image = img
+        currentEvoImg.image = img
+        pokedexIDLbl.text = "\(pokemon.pokedexId)"
+        
+        
+        pokemon.downloadPokemonDetail {
+            
+            //Whatever we write will only be called after the network call is complete!
+            self.updateUI()
+        }
+    }
+    
+    func updateUI() {
+        baseAttackLbl.text = pokemon.attack
+        defenseLbl.text  = pokemon.defense
+        heightLbl.text = pokemon.height
+        weightLbl.text = pokemon.weight
+        typeLbl.text = pokemon.type
+        
+        
     }
 
     @IBAction func backBtnPressed(_ sender: AnyObject) {
