@@ -35,7 +35,6 @@ class PokemonDetailVC: UIViewController {
         currentEvoImg.image = img
         pokedexIDLbl.text = "\(pokemon.pokedexId)"
         
-        
         pokemon.downloadPokemonDetail {
             
             //Whatever we write will only be called after the network call is complete!
@@ -49,8 +48,17 @@ class PokemonDetailVC: UIViewController {
         heightLbl.text = pokemon.height
         weightLbl.text = pokemon.weight
         typeLbl.text = pokemon.type
+        descriptionLbl.text = pokemon.description
         
-        
+        if pokemon.nextEvolutionID == "" {
+            evoLbl.text = "No evolutions"
+            nextEvoImg.isHidden = true
+        } else {
+            nextEvoImg.isHidden = false
+            nextEvoImg.image = UIImage(named: pokemon.nextEvolutionID)
+            let str = "Next Evolution: \(pokemon.nextEvolutionName) - LVL \(pokemon.nextEvolutionLvl)"
+            evoLbl.text = str
+        }
     }
 
     @IBAction func backBtnPressed(_ sender: AnyObject) {
